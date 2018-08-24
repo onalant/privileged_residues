@@ -1,0 +1,3 @@
+[diff "pdb"]
+	textconv = cat
+	binary = true

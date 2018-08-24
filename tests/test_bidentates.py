@@ -17,6 +17,7 @@ data = [ (path.basename(bdtype), path.splitext(respair)[0]) for (bdtype, _, resp
 def idfn(value):
     return "%s - %s" % value
 
+@pytest.mark.skip(reason="too slow to run as a unit test.")
 @pytest.mark.parametrize("bdtype, respair", data, ids=idfn)
 def test_bidentate(bdtype, respair):
     pdb = path.join(curdir, "data", "bidentates", bdtype, "%s.pdb" % (respair))

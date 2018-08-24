@@ -64,7 +64,7 @@ def coords_to_transform(coords):
     y_hat = y / np.linalg.norm(y)
     matrix[:3, 1] = y_hat
 
-    x_hat = np.cross(y_hat[:-1], z_hat[:-1])
+    x_hat = np.cross(y_hat, z_hat)
     matrix[:3, 0] = x_hat
 
     assert_allclose(list(map(np.linalg.norm, [x_hat, y_hat, z_hat])), 1.0)

@@ -80,7 +80,7 @@ tags
 
 # Miscellanea
 local/
-tests/data
+conda/
 
 # NFS temporary files
 .nfs*

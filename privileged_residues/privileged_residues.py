@@ -97,7 +97,7 @@ class PrivilegedResidues:
         dummy_pose = pyrosetta.pose_from_sequence("A", "fa_standard")
         res_type_set = dummy_pose.conformation().residue_type_set_for_conf()
 
-        hashed_rays = np.asscalar(self._raygrid.get_keys(*(util.numpy_to_rif(r) for r in [ray1, ray2])).squeeze())
+        hashed_rays = self._raygrid.get_keys(*(util.numpy_to_rif(r) for r in [ray1, ray2])).item()
 
         results = self._data[hashed_rays, group]
         try:

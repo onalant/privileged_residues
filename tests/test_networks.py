@@ -17,6 +17,7 @@ data = [ ("network", path.splitext(rstrplt)[0]) for rstrplt in os.listdir(path.j
 def idfn(value):
     return "%s - %s" % value
 
+@pytest.mark.skip(reason="too slow to run as a unit test.")
 @pytest.mark.parametrize("nwtype, restrplt", data, ids=idfn)
 def test_network(nwtype, restrplt):
     pdb = path.join(curdir, "data", "networks", "%s.pdb" % (restrplt))

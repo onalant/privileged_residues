@@ -1,0 +1,6 @@
+steps:
+  - label: pytest
+    command: |
+      conda env create -p conda -f environment.yml
+      conda list -p conda
+      conda/bin/pytest

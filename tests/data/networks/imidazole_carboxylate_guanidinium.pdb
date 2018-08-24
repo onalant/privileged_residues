@@ -1,0 +1,51 @@
+HETNAM     C__ A   1  C__                                                       
+HETNAM     I__ X   1  I__                                                       
+HETNAM     G__ A   2  G__                                                       
+HETATM    1  CV  C__ A   1       9.822   1.552  -1.932  1.00  0.00           X  
+HETATM    2  CD  C__ A   1       8.392   1.160  -1.682  1.00  0.00           C  
+HETATM    3  OE1 C__ A   1       8.145   0.461  -0.726  1.00  0.00           O  
+HETATM    4  OE2 C__ A   1       7.545   1.561  -2.449  1.00  0.00           O  
+HETATM    5  CV  G__ A   2       5.665  -0.959  -7.271  1.00  0.00           X  
+HETATM    6  NE  G__ A   2       6.001   0.048  -6.277  1.00  0.00           N  
+HETATM    7  CZ  G__ A   2       5.337   0.231  -5.118  1.00  0.00           C  
+HETATM    8  NH1 G__ A   2       4.307  -0.532  -4.824  1.00  0.00           N  
+HETATM    9  NH2 G__ A   2       5.719   1.172  -4.283  1.00  0.00           N  
+HETATM   10  HE  G__ A   2       6.788   0.654  -6.469  1.00  0.00           H  
+HETATM   11 1HH1 G__ A   2       4.016  -1.255  -5.469  1.00  0.00           H  
+HETATM   12 2HH1 G__ A   2       3.810  -0.394  -3.955  1.00  0.00           H  
+HETATM   13 1HH2 G__ A   2       6.508   1.758  -4.507  1.00  0.00           H  
+HETATM   14 2HH2 G__ A   2       5.220   1.308  -3.415  1.00  0.00           H  
+TER                                                                             
+HETATM   16  CV  I__ X   1       1.999  -0.766  -1.212  1.00  0.00           X  
+HETATM   17  CG  I__ X   1       3.494  -0.806  -1.279  1.00  0.00           C  
+HETATM   18  ND1 I__ X   1       4.176  -1.444  -2.294  1.00  0.00           N  
+HETATM   19  CD2 I__ X   1       4.438  -0.289  -0.458  1.00  0.00           C  
+HETATM   20  CE1 I__ X   1       5.477  -1.318  -2.093  1.00  0.00           C  
+HETATM   21  NE2 I__ X   1       5.661  -0.622  -0.986  1.00  0.00           N  
+HETATM   22  HD2 I__ X   1       4.261   0.283   0.453  1.00  0.00           H  
+HETATM   23  HE1 I__ X   1       6.263  -1.720  -2.732  1.00  0.00           H  
+HETATM   24  HE2 I__ X   1       6.555  -0.372  -0.588  1.00  0.00           H  
+TER                                                                             
+CONECT    1    2                                                                
+CONECT    2    1    3    4                                                      
+CONECT    3    2                                                                
+CONECT    4    2                                                                
+CONECT    5    6                                                                
+CONECT    6    5    7   10                                                      
+CONECT    7    6    8    9                                                      
+CONECT    8    7   11   12                                                      
+CONECT    9    7   13   14                                                      
+CONECT   10    6                                                                
+CONECT   11    8                                                                
+CONECT   12    8                                                                
+CONECT   13    9                                                                
+CONECT   14    9                                                                
+CONECT   16   17                                                                
+CONECT   17   16   18   19                                                      
+CONECT   18   17   20                                                           
+CONECT   19   17   21   22                                                      
+CONECT   20   18   21   23                                                      
+CONECT   21   19   20   24                                                      
+CONECT   22   19                                                                
+CONECT   23   20                                                                
+CONECT   24   21                                                                

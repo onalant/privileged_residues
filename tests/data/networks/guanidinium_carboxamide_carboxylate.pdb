@@ -1,0 +1,45 @@
+HETNAM     CA_ A   1  CA_                                                       
+HETNAM     G__ X   1  G__                                                       
+HETNAM     C__ A   2  C__                                                       
+HETATM    1  CV  CA_ A   1       8.907  -3.834  -8.001  1.00  0.00           X  
+HETATM    2  CG  CA_ A   1       8.093  -3.120  -6.958  1.00  0.00           C  
+HETATM    3  OD1 CA_ A   1       7.493  -3.754  -6.077  1.00  0.00           O  
+HETATM    4  ND2 CA_ A   1       8.055  -1.797  -7.034  1.00  0.00           N  
+HETATM    5 1HD2 CA_ A   1       7.528  -1.271  -6.364  1.00  0.00           H  
+HETATM    6 2HD2 CA_ A   1       8.553  -1.324  -7.760  1.00  0.00           H  
+HETATM    7  CV  C__ A   2      11.036  -0.128  -4.229  1.00  0.00           X  
+HETATM    8  CD  C__ A   2       9.789  -0.740  -4.805  1.00  0.00           C  
+HETATM    9  OE1 C__ A   2       9.701  -1.947  -4.838  1.00  0.00           O  
+HETATM   10  OE2 C__ A   2       8.922   0.000  -5.213  1.00  0.00           O  
+TER                                                                             
+HETATM   12  CV  G__ X   1       3.954  -1.551  -2.515  1.00  0.00           X  
+HETATM   13  NE  G__ X   1       5.404  -1.612  -2.611  1.00  0.00           N  
+HETATM   14  CZ  G__ X   1       6.080  -2.225  -3.602  1.00  0.00           C  
+HETATM   15  NH1 G__ X   1       5.425  -2.824  -4.572  1.00  0.00           N  
+HETATM   16  NH2 G__ X   1       7.402  -2.223  -3.600  1.00  0.00           N  
+HETATM   17  HE  G__ X   1       5.943  -1.162  -1.883  1.00  0.00           H  
+HETATM   18 1HH1 G__ X   1       4.415  -2.825  -4.574  1.00  0.00           H  
+HETATM   19 2HH1 G__ X   1       5.932  -3.283  -5.315  1.00  0.00           H  
+HETATM   20 1HH2 G__ X   1       7.905  -1.763  -2.854  1.00  0.00           H  
+HETATM   21 2HH2 G__ X   1       7.908  -2.682  -4.342  1.00  0.00           H  
+TER                                                                             
+CONECT    1    2                                                                
+CONECT    2    1    3    4                                                      
+CONECT    3    2                                                                
+CONECT    4    2    5    6                                                      
+CONECT    5    4                                                                
+CONECT    6    4                                                                
+CONECT    7    8                                                                
+CONECT    8    7    9   10                                                      
+CONECT    9    8                                                                
+CONECT   10    8                                                                
+CONECT   12   13                                                                
+CONECT   13   12   14   17                                                      
+CONECT   14   13   15   16                                                      
+CONECT   15   14   18   19                                                      
+CONECT   16   14   20   21                                                      
+CONECT   17   13                                                                
+CONECT   18   15                                                                
+CONECT   19   15                                                                
+CONECT   20   16                                                                
+CONECT   21   16                                                                

@@ -63,7 +63,7 @@ def numpy_to_rif(r):
     -------
     rif.geom.Ray
     """
-    return r.astype("f4").reshape(r.shape[:-2] + (8,)).view(Ray)
+    return r.astype("f4").flatten().view(Ray)
 
 def models_from_pdb(fname):
     """Get models from a PDB as individual poses.

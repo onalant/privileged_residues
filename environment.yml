@@ -1,0 +1,24 @@
+channels:
+    - http://conda.ipd.uw.edu
+    - anaconda
+dependencies:
+    - python
+    - numpy
+    - rif
+    - pyrosetta
+    - sphinx
+    - coverage
+    - docutils
+    - numpy
+    - pyyaml
+    - pytest
+    - pytest-runner
+    - h5py
+    - cryptography
+    - flake8
+    - pip
+    - pip:
+        - rmsd
+        - tox
+        - watchdog
+        - more_itertools
