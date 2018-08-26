@@ -1,24 +1,26 @@
 channels:
     - http://conda.ipd.uw.edu
     - anaconda
+    - conda-forge
 dependencies:
     - python
     - numpy
     - rif
     - pyrosetta
     - sphinx
-    - coverage
     - docutils
     - numpy
     - pyyaml
     - pytest
+    - pytest-cov
+    - coverage
+    - codecov
     - pytest-runner
     - h5py
     - cryptography
+    - more-itertools
+    - tox
+    - watchdog
     - flake8
-    - pip
     - pip:
         - rmsd
-        - tox
-        - watchdog
-        - more_itertools
