@@ -81,7 +81,7 @@ def _n_rays(pose, selected):
         pose.
     """
 
-    assert(len(pose) == len(selected))
+    assert(len(pose.residues) == len(selected))
 
     rays = { }
 
@@ -91,8 +91,9 @@ def _n_rays(pose, selected):
 
             N = rsd.atom_index("N")
             H = rsd.attached_H_begin(N)
-            
-            rays[i] = create_ray(rsd.xyz(H), rsd.xyz(N))
+
+            if (rsd.attached_H_end(N) > 0):
+                rays[i] = create_ray(rsd.xyz(H), rsd.xyz(N))
 
     return rays
 
@@ -113,7 +114,7 @@ def _c_rays(pose, selected):
         pose.
     """
 
-    assert(len(pose) == len(selected))
+    assert(len(pose.residues) == len(selected))
 
     rays = { }
 
@@ -123,7 +124,7 @@ def _c_rays(pose, selected):
 
             C = rsd.atom_index("C")
             O = rsd.atom_index("O")
-            
+
             rays[i] = create_ray(rsd.xyz(O), rsd.xyz(C))
 
     return rays
@@ -145,20 +146,20 @@ def _sc_donor(pose, selected):
         pose.
     """
 
-    assert(len(pose) == len(selected))
+    assert(len(pose.residues) == len(selected))
 
     rays = defaultdict(list)
 
-    reg = re.compile(r"[A-Za-z]")
+    reg = re.compile(r"[NO]")
 
     for i in range(1, len(pose.residues) + 1):
         if (selected[i]):
             rsd = pose.residue(i)
 
             for j in range(rsd.first_sidechain_atom(), rsd.natoms() + 1):
-                name = reg.search(rsd.atom_name(j)).group(0)
+                is_eneg = reg.search(rsd.atom_name(j))
 
-                if (name == "N" and rsd.attached_H_begin(j) <= rsd.natoms()):
+                if (is_eneg and rsd.heavyatom_has_polar_hydrogens(j)):
                     for hatm in range(rsd.attached_H_begin(j), rsd.attached_H_end(j) + 1):
                         rays[i].append(create_ray(rsd.xyz(hatm), rsd.xyz(j)))
 
@@ -181,21 +182,21 @@ def _sc_acceptor(pose, selected):
         pose.
     """
 
-    assert(len(pose) == len(selected))
+    assert(len(pose.residues) == len(selected))
 
     rays = defaultdict(list)
 
-    reg = re.compile(r"[A-Za-z]")
+    reg = re.compile(r"[NO]")
 
     for i in range(1, len(pose.residues) + 1):
         if (selected[i]):
             rsd = pose.residue(i)
 
             for j in range(rsd.first_sidechain_atom(), rsd.natoms() + 1):
-                name = reg.search(rsd.atom_name(j)).group(0)
+                is_eneg = reg.search(rsd.atom_name(j))
                 batm = rsd.atom_base(j)
 
-                if (name == "O"):
+                if (is_eneg and rsd.heavyatom_is_an_acceptor(j)):
                     rays[i].append(create_ray(rsd.xyz(j), rsd.xyz(batm)))
 
     return rays
@@ -226,7 +227,7 @@ def sc_bb_rays(pose, selector):
 
     rays = []
 
-    for i in nrays.keys():
+    for i in nrays:
         if (i - 1 in crays):
             rays.append((nrays[i], crays[i - 1]))
 
@@ -263,7 +264,7 @@ def sc_scbb_rays(pose, selector):
 
     rays = []
 
-    for i in nrays.keys():
+    for i in nrays:
         for jray in sc_acc[i] + sc_don[i]:
             rays.append((nrays[i], jray))
             rays.append((jray, crays[i]))
@@ -296,7 +297,7 @@ def sc_sc_rays(pose, selector):
 
     rays = []
 
-    for i in range(1, len(pose) + 1):
+    for i in range(1, len(pose.residues) + 1):
         for (jray, kray) in product(sc_don[i], sc_acc[i]):
             rays.append((jray, kray))
 

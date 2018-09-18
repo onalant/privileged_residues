@@ -28,7 +28,6 @@ def rays_to_transform(first, second):
 
     z_hat = np.zeros(len(x_hat))
     z_hat[:-1] = np.cross(x_hat[:-1], y_hat[:-1])
-    assert_allclose(np.linalg.norm(z_hat), 1.0)
 
     matrix = [x_hat, y_hat, z_hat, translation]
 
