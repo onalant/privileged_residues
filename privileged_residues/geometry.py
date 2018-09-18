@@ -23,7 +23,7 @@ def rays_to_transform(first, second):
     x_hat = x / np.linalg.norm(x)
 
     xy = second[:, 0] - translation
-    y = xy - np.dot(xy, x_hat) * x_hat
+    y = xy - (xy @ x_hat) * x_hat
     y_hat = y / np.linalg.norm(y)
 
     z_hat = np.zeros(len(x_hat))
@@ -59,7 +59,7 @@ def coords_to_transform(coords):
     matrix[:3, 2] = z_hat
 
     yz = coords[0] - coords[1]
-    y = yz - np.dot(yz, z_hat) * z_hat
+    y = yz - (yz @ z_hat) * z_hat
     y_hat = y / np.linalg.norm(y)
     matrix[:3, 1] = y_hat
 
@@ -67,7 +67,7 @@ def coords_to_transform(coords):
     matrix[:3, 0] = x_hat
 
     assert_allclose(list(map(np.linalg.norm, [x_hat, y_hat, z_hat])), 1.0)
-    
+
     return matrix
 
 def create_ray(center, base):

@@ -4,7 +4,11 @@ channels:
     - conda-forge
 dependencies:
     - python
+    - jupyter_console
     - numpy
+    - dask
+    # - zarr # NOTE(onalant): PR for shaped sub-dtypes here https://github.com/zarr-developers/zarr/pull/296
+    - numcodecs
     - rif
     - pyrosetta
     - sphinx
@@ -16,7 +20,6 @@ dependencies:
     - coverage
     - codecov
     - pytest-runner
-    - h5py
     - cryptography
     - more-itertools
     - tox
@@ -24,3 +27,4 @@ dependencies:
     - flake8
     - pip:
         - rmsd
+        - git+https://github.com/onalant/zarr.git@shape

@@ -72,3 +72,5 @@ sc_acceptor = {
         pick_ray(pose.residue(2), "OG1", "CB")
     ]
 }
+
+cat_pi = [ ]

@@ -5,8 +5,8 @@ from numpy.testing import assert_allclose
 
 from pyrosetta.bindings.utility import bind_method
 from pyrosetta.rosetta.core.import_pose import pose_from_pdbstring
+from pyrosetta.rosetta.numeric import xyzMatrix_double_t as M3
 from pyrosetta.rosetta.numeric import xyzVector_double_t as V3
-from pyrosetta.toolbox.numpy_utils import numpy_to_rosetta
 
 from rif.geom import Ray
 
@@ -23,7 +23,7 @@ def apply_transform(self, xform):
     assert(xform.shape == (4, 4)) # homogeneous transform
     assert_allclose(np.linalg.det(xform[:3,:3]), 1., atol=1e-4)
 
-    Rx = numpy_to_rosetta(xform[:3, :3])
+    Rx = M3.rows(*xform[:3, :3].flatten())
     v = V3(*xform[:3, 3])
 
     self.apply_transform_Rx_plus_v(Rx, v)

@@ -78,3 +78,7 @@ sc_donor = {
 }
 
 sc_acceptor = { }
+
+cat_pi = [
+    (pick_ray(pose.residue(2), "1HZ", "NZ"), pick_ray(pose.residue(2), "2HZ", "NZ"))
+]

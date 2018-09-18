@@ -1,2 +1,3 @@
 ignore:
     - "privileged_residues/data"
+    - "privileged_residues/dtable"

@@ -1,54 +1,10 @@
 import re
 
-from collections import defaultdict, namedtuple
+from .util import FunctionalGroup, ResInfo
+from ..geometry import create_ray
+
+from collections import defaultdict
 from itertools import combinations, product
-
-from .geometry import create_ray
-
-# the order of the keys of this dictionary
-FunctionalGroup = namedtuple("FunctionalGroup", ["resName", "donor", "acceptor", "atoms"])
-FunctionalGroup.__doc__ = """Store hydrogen bonding information about a
-functional group as well as information that can be used to position it
-in three-space.
-
-Attributes
-----------
-resName : str
-    Name of the functional group.
-donor : bool
-    True if the functional group can be a donor in a hydrogen bond.
-acceptor : bool
-    True if the functional group can be an acceptor in a hydrogen bond.
-atoms : list of str
-    List of three atom names that are used to construct a coordinate
-    frame to describe the position of the functional group in three-space.
-"""
-
-functional_groups = {
-    "OH_": FunctionalGroup("hydroxide", True, True, ["CV", "OH", "HH"]),
-    "G__": FunctionalGroup("guanidinium", True, False, ["CZ", "NH1", "NH2"]),
-    "I__": FunctionalGroup("imidazole", True, True, ["ND1", "CD2", "NE2"]),
-    # imidazole tautomer
-    "ID_": FunctionalGroup("imidazole_D", True, True, ["ND1", "CD2", "NE2"]),
-    "A__": FunctionalGroup("amine", True, False, ["NZ", "1HZ", "2HZ"]),
-    "C__": FunctionalGroup("carboxylate", False, True, ["CD", "OE1", "OE2"]),
-    "CA_": FunctionalGroup("carboxamide", True, True, ["CG", "OD1", "ND2"])
-}
-
-ResInfo = namedtuple("ResInfo", ["grp", "atoms"])
-ResInfo.__doc__ = """Store functional group information about an amino
-acid as well as information that can be used to position it in
-three-space.
-
-Attributes
-----------
-grp : str
-    Name of a functional group.
-atoms : list of str
-    List of three atom names that are used to construct a coordinate
-    frame to describe the position of the functional group of the amino
-    acid in three-space.
-"""
 
 rsd_to_fxnl_grp = {
     "ASN": ResInfo("CA_", ["CG", "OD1", "ND2"]),
@@ -306,101 +262,5 @@ def sc_sc_rays(pose, selector):
 
         for (jray, kray) in combinations(sc_acc[i], 2):
             rays.append((jray, kray))
-
-    return rays
-
-def donor_donor_rays(pose, selector):
-    """Get donor-donor network ray pairs for the residues indicated by
-    the provided residue selector.
-
-    Parameters
-    ----------
-    pose : pyrosetta.pose
-        Target structure.
-    selector: pyrosetta.rosetta.core.select.residue_selector.ResidueSelector
-        Residue selector to apply to the pose.
-
-    Returns
-    -------
-        list of tuple of np.ndarray
-            All of the ray pairs corresponding to possible donor-donor
-            network interactions in the selected subset of the pose.
-    """
-
-    selected = selector.apply(pose)
-
-    sc_don = _sc_donor(pose, selected)
-
-    rays = []
-
-    for (i, j) in product(sc_don.keys(), sc_don.keys()):
-        if (i != j):
-            for (kray, lray) in product(sc_don[i], sc_don[j]):
-                rays.append((kray, lray))
-
-    return rays
-
-def acceptor_acceptor_rays(pose, selector):
-    """Get acceptor-acceptor network ray pairs for the residues
-    indicated by the provided residue selector.
-
-    Parameters
-    ----------
-    pose : pyrosetta.pose
-        Target structure.
-    selector: pyrosetta.rosetta.core.select.residue_selector.ResidueSelector
-        Residue selector to apply to the pose.
-
-    Returns
-    -------
-        list of tuple of np.ndarray
-            All of the ray pairs corresponding to possible
-            acceptor-acceptor network interactions in the selected
-            subset of the pose.
-    """
-
-    selected = selector.apply(pose)
-
-    sc_acc = _sc_acceptor(pose, selected)
-
-    rays = []
-
-    for (i, j) in product(sc_acc.keys(), sc_acc.keys()):
-        if (i != j):
-            for (kray, lray) in product(sc_acc[i], sc_acc[j]):
-                rays.append((kray, lray))
-
-    return rays
-
-def donor_acceptor_rays(pose, selector):
-    """Get donor-acceptor network ray pairs for the residues indicated
-    by the provided residue selector.
-
-    Parameters
-    ----------
-    pose : pyrosetta.pose
-        Target structure.
-    selector: pyrosetta.rosetta.core.select.residue_selector.ResidueSelector
-        Residue selector to apply to the pose.
-
-    Returns
-    -------
-        list of tuple of np.ndarray
-            All of the ray pairs corresponding to possible
-            donor-acceptor network interactions in the selected subset
-            of the pose.
-    """
-
-    selected = selector.apply(pose)
-
-    sc_acc = _sc_acceptor(pose, selected)
-    sc_don = _sc_donor(pose, selected)
-
-    rays = []
-
-    for (i, j) in product(sc_don.keys(), sc_acc.keys()):
-        if (i != j):
-            for (kray, lray) in product(sc_don[i], sc_acc[j]):
-                rays.append((kray, lray))
 
     return rays

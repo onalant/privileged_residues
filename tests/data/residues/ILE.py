@@ -69,3 +69,5 @@ c_rays = {
 sc_donor = { }
 
 sc_acceptor = { }
+
+cat_pi = [ ]
