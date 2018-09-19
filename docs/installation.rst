@@ -14,7 +14,7 @@ To install Privileged Residues, run this command in your terminal:
 
     $ pip install privileged_residues
 
-This is the preferred method to install Privileged Residues, as it will always install the most recent stable release. 
+This is the preferred method to install Privileged Residues, as it will always install the most recent stable release.
 
 If you don't have `pip`_ installed, this `Python installation guide`_ can guide
 you through the process.
@@ -44,8 +44,9 @@ Once you have a copy of the source, you can install it with:
 
 .. code-block:: console
 
+    $ ./devenv.sh
+    $ source conda/bin/activate conda
     $ python setup.py install
-
 
 .. _Github repo: https://github.com/weitzner/privileged_residues
 .. _tarball: https://github.com/weitzner/privileged_residues/tarball/master

@@ -1,21 +1,22 @@
-Privileged Residues Documentation
-=================================
+Privileged Residues
+===================
+Privileged Residues contains protocols for placing residues on the surface
+of a target protein that can be added to a rotamer interaction field.
 
-Contents:
+Contents
+--------
 
 .. toctree::
    :maxdepth: 2
 
-   readme
-   installation
-   usage
-   modules
+   tutorial
+   api
    contributing
    authors
-   history
+   release
 
 Indices and tables
-==================
+------------------
 
 * :ref:`genindex`
 * :ref:`modindex`
