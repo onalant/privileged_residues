@@ -34,7 +34,7 @@ setup(
     long_description=readme + '\n\n' + history,
     author="Brian D. Weitzner",
     author_email='weitzner@uw.edu',
-    url='https://github.com/RosettaCommons/privileged_residues',
+    url='https://github.com/uw-ipd/privileged_residues',
     packages=find_packages(include=['privileged_residues*']),
     include_package_data=True,
     install_requires=requirements,
