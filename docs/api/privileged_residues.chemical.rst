@@ -15,5 +15,4 @@ Submodules
    privileged_residues.chemical.bidentate
    privileged_residues.chemical.catpi
    privileged_residues.chemical.network
-   privileged_residues.chemical.util
 

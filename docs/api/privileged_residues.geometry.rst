@@ -1,6 +1,6 @@
-privileged\_residues.geometry module
-====================================
-.. automodule:: privileged_residues.geometry
+Geometry routines (`privileged_residues.geometry`)
+--------------------------------------------------
+.. module:: privileged_residues.geometry
 
 .. autofunction:: rays_to_transform
 

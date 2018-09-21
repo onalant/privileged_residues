@@ -1,6 +1,6 @@
 The PrivilegedResidues class (`privileged_residues.core`)
 ---------------------------------------------------------
-.. automodule:: privileged_residues.core
+.. module:: privileged_residues.core
 
 .. autoclass:: PrivilegedResidues
 

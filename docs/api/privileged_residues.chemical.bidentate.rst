@@ -1,6 +1,6 @@
 Bidentate ray selection (`privileged_residues.chemical.bidentate`)
 ------------------------------------------------------------------
-.. automodule:: privileged_residues.chemical.bidentate
+.. module:: privileged_residues.chemical.bidentate
 
 .. autofunction:: sc_bb_rays
 

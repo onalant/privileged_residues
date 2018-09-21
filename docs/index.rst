@@ -12,7 +12,6 @@ of a target protein that can be added to a rotamer interaction field.
    contributing
    authors
    release
-   api
 
 Packages
 --------
