@@ -6,14 +6,13 @@ dependencies:
     - python
     - jupyter_console
     - numpy
+    - numba
     - dask
     # - zarr # NOTE(onalant): PR for shaped sub-dtypes here https://github.com/zarr-developers/zarr/pull/296
     - numcodecs
     - rif
     - pyrosetta
     - sphinx
-    - docutils
-    - numpy
     - pyyaml
     - pytest
     - pytest-cov
@@ -21,9 +20,7 @@ dependencies:
     - codecov
     - pytest-runner
     - cryptography
-    - more-itertools
     - tox
-    - watchdog
     - flake8
     - pip:
         - better-apidoc
