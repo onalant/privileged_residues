@@ -4,34 +4,14 @@ Privileged Residues contains protocols for placing residues on the surface
 of a target protein that can be added to a rotamer interaction field.
 
 .. toctree::
-   :glob:
-   :caption: Notes
+   :maxdepth: 2
 
    installation
    tutorial
+   api
    contributing
    authors
    release
-
-Packages
---------
-
-.. toctree::
-    :caption: Packages
-    :name: api
-    :hidden:
-
-    api/privileged_residues.core
-    api/privileged_residues.geometry
-    api/privileged_residues.chemical
-    api/privileged_residues.util
-
-.. autosummary::
-
-    privileged_residues.core
-    privileged_residues.geometry
-    privileged_residues.chemical
-    privileged_residues.util
 
 Indices
 =======

@@ -12,7 +12,7 @@ Submodules
 
 .. toctree::
 
-   privileged_residues.chemical.bidentate
-   privileged_residues.chemical.catpi
-   privileged_residues.chemical.network
+   chemical.bidentate
+   chemical.catpi
+   chemical.network
 
