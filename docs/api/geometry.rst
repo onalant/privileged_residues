@@ -1,5 +1,9 @@
 Geometry routines (`privileged_residues.geometry`)
 --------------------------------------------------
-.. automodule:: privileged_residues.geometry
-    :members:
-    :undoc-members:
+.. module:: privileged_residues.geometry
+
+.. autofunction:: rays_to_transform
+
+.. autofunction:: coords_to_transform
+
+.. autofunction:: create_ray
