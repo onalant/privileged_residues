@@ -22,6 +22,7 @@ Packages
     :name: api
     :hidden:
 
+    api/privileged_residues
     api/privileged_residues.core
     api/privileged_residues.geometry
     api/privileged_residues.chemical
@@ -29,6 +30,7 @@ Packages
 
 .. autosummary::
 
+    privileged_residues
     privileged_residues.core
     privileged_residues.geometry
     privileged_residues.chemical
