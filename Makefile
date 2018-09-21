@@ -64,7 +64,6 @@ coverage: ## check code coverage quickly with the default Python
 
 docs: ## generate Sphinx HTML documentation, including API docs
 	$(MAKE) -C docs clean
-	PYTHONPATH=. better-apidoc -T -M -e -t docs/_templates -o docs/api privileged_residues
 	$(MAKE) -C docs html
 	$(BROWSER) docs/_build/html/index.html
 
