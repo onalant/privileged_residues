@@ -10,7 +10,7 @@ First steps with Privileged Residues
 
 A PrivilegedResidues instance is created like so:
 
-    >>> from privileged_residues import PrivilegedResidues
+    >>> from privileged_residues.core import PrivilegedResidues
     >>> pr = PrivilegedResidues("$DATA_TABLES_PATH")
 
 Additionally, you will need a `pyrosetta.Pose` to search and a

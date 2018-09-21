@@ -21,13 +21,5 @@ privileged_residues
 
 
 
-    Summary
-    -------
-
-  
-
-  
-  
-    ``__all__``: :class:`PrivilegedResidues <privileged_residues.core.PrivilegedResidues>`
 
 
