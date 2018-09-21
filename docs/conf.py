@@ -123,14 +123,6 @@ exclude_patterns = ['_build', 'api/privileged_residues.rst']
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
 
-autoclass_content = "class"  # Only include class docstring
-autodoc_default_flags = [
-    # Make sure that any autodoc declarations show the right members
-    "members",
-    "private-members",
-    "show-inheritance",
-]
-
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
 
