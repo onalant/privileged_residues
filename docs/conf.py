@@ -40,7 +40,7 @@ MOCK_MODULES = ['pyrosetta', 'pyrosetta.bindings.utility',
                 'pyrosetta.rosetta.protocols',
                 'pyrosetta.rosetta.protocols.minimization_packing',
                 'rif', 'rif.geom', 'rif.geom.ray_hash', 'rif.hash',
-                'dask', 'dask.array', 'zarr',
+                'dask', 'dask.array', 'dask.bag', 'numcodecs', 'numcodecs.blosc', 'zarr',
                 'numpy', 'numpy.testing']
 
 sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
@@ -105,7 +105,7 @@ release = version
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build']
+exclude_patterns = ['_build', 'api/privileged_residues.rst']
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
