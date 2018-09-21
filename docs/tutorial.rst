@@ -66,3 +66,28 @@ PrivilegedResidues will also resolve group hierarchies, so
 is equivalent to
 
     >>> matches = pr.search(pose, selector, groups=["sc_sc", "sc_scbb", "sc_bb"])
+
+.. _tutorial_adding
+
+Adding tables
+-------------
+
+Canonical method forthcoming.
+
+The current protocol for adding tables involves utilizing
+:func:`privileged_residues.dtable.gentable`. While this method accepts any
+dtype, PrivilegedResidues requires the presence of a field `"hash"` with type
+`np.uint64`. An example dtype would be::
+
+    >>> dt = np.dtype([("hash", "u8"), ("residue", "S3"), ("transform", "u8")])
+
+Further documentation of `gentable` can be found in the source files.
+
+.. _tutorial_chemical
+
+Defining new ray selectors
+--------------------------
+
+New ray selectors should be placed in the :mod:`privileged_residues.chemical`
+package. Additionally, :func:`privileged_residues.chemical.util.resolve_rays`
+should be updated to match the new ray categories.
