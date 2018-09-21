@@ -1,7 +1,10 @@
-privileged_residues
-===================
+API reference
+=============
 
 .. toctree::
-   :maxdepth: 4
+    :maxdepth: 3
 
-   api/privileged_residues
+    api/chemical
+    api/core
+    api/geometry
+    api/util
