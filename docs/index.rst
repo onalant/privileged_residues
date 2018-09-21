@@ -9,10 +9,10 @@ of a target protein that can be added to a rotamer interaction field.
 
    installation
    tutorial
-   api
    contributing
    authors
    release
+   api
 
 Packages
 --------

@@ -103,7 +103,7 @@ release = version
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build', 'api/privileged_residues.rst']
+exclude_patterns = ['api/privileged_residues.rst']
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -122,6 +122,14 @@ exclude_patterns = ['_build', 'api/privileged_residues.rst']
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
+
+autoclass_content = "class"  # Only include class docstring
+autodoc_default_flags = [
+    # Make sure that any autodoc declarations show the right members
+    "members",
+    "private-members",
+    "show-inheritance",
+]
 
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
