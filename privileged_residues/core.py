@@ -8,7 +8,8 @@ from .chemical.util import functional_groups, resolve_rays
 from .dtable import Table
 
 from rif.geom.ray_hash import RayToRay4dHash
-from rif.hash import XformHash_bt24_BCC6_X3f
+
+from xbin import XformBinner
 
 from pyrosetta.rosetta.core.conformation import ResidueFactory
 
@@ -77,7 +78,7 @@ class PrivilegedResidues:
         ori_resl = attrs["ori_resl"]
         cart_bound = attrs["cart_bound"]
 
-        lattice = XformHash_bt24_BCC6_X3f(cart_resl, ori_resl, cart_bound)
+        lattice = XformBinner(cart_resl, ori_resl, cart_bound)
         raygrid = RayToRay4dHash(ori_resl, LEVER, bound=BOUND)
 
         hashed_rays = raygrid.get_keys(*(util.numpy_to_rif(r) for r in [ray1, ray2])).item()
@@ -91,7 +92,7 @@ class PrivilegedResidues:
 
         for pos_info in results:
             try:
-                stored_frame = lattice.get_center([pos_info["transform"]])["raw"].squeeze()
+                stored_frame = lattice.get_bin_center([pos_info["transform"]]).squeeze()
             # NOTE(onalant): degenerate case
             except: # pragma: no cover
                 continue
