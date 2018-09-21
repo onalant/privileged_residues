@@ -40,8 +40,9 @@ MOCK_MODULES = ['pyrosetta', 'pyrosetta.bindings.utility',
                 'pyrosetta.rosetta.protocols',
                 'pyrosetta.rosetta.protocols.minimization_packing',
                 'rif', 'rif.geom', 'rif.geom.ray_hash', 'rif.hash',
-                'dask', 'dask.array', 'dask.bag', 'numcodecs', 'numcodecs.blosc', 'zarr',
-                'numpy', 'numpy.testing']
+                'numpy', 'numpy.testing',
+                'dask', 'dask.array', 'dask.bag',
+                'numcodecs', 'zarr']
 
 sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
 
