@@ -1,4 +1,0 @@
-dask
-numcodecs
-toolz
-zarr
