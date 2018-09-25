@@ -66,7 +66,7 @@ def to_raypair(xyzs):
     return (ray1, ray2)
 
 def write_records_from_structure(pipe, posefile):
-    prefix = "[WORKER-%s]" % (re.match(".*(\d+)", multiprocessing.current_process().name).group(1))
+    prefix = "[WORKER-%s]" % (re.match(".*?(\d+)", multiprocessing.current_process().name).group(1))
     print(prefix, posefile)
     for rs in atom_records_from_pdb(posefile):
         for (a, b) in permutations(target_pair):
