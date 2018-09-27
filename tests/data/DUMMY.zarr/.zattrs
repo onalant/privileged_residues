@@ -1,6 +1,6 @@
 {
-    "name": "sc_bb",
+    "cart_bound": 16.0,
     "cart_resl": 0.1,
-    "ori_resl": 2.0,
-    "cart_bound": 16.0
+    "name": "sc_bb",
+    "ori_resl": 2.0
 }

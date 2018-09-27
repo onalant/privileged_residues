@@ -2,8 +2,8 @@ import multiprocessing
 import numpy as np
 import pyrosetta
 import re
-import sys
 
+from datetime import datetime
 from itertools import permutations
 
 from rif.eigen_types import X3
@@ -44,7 +44,6 @@ def atom_records_from_pdb(f):
     for line in open(f):
         if (not line.startswith("ENDMDL")):
             if (line.startswith("ATOM")):
-                sys.stdout.flush()
                 records.append(line.strip().split())
         else:
             yield records
@@ -65,9 +64,14 @@ def to_raypair(xyzs):
 
     return (ray1, ray2)
 
-def write_records_from_structure(pipe, posefile):
+def preprocess(posefiles):
+    return posefiles
+
+def write_records(pipe, posefile):
     prefix = "[WORKER-%s]" % (re.match(".*?(\d+)", multiprocessing.current_process().name).group(1))
-    print(prefix, posefile)
+    t = datetime.now().time().isoformat(timespec="milliseconds")
+    print(t, prefix, posefile)
+
     for rs in atom_records_from_pdb(posefile):
         for (a, b) in permutations(target_pair):
             rA = list(filter(lambda r: r[5] == str(a), rs))
@@ -91,4 +95,3 @@ def write_records_from_structure(pipe, posefile):
             record = np.array([(hashed_rays, fxBName, transform)], dtype=dt)
 
             pipe.put(record)
-

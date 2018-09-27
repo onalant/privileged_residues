@@ -25,4 +25,5 @@ dependencies:
     - pip:
         - better-apidoc
         - rmsd
+        - xbin
         - git+https://github.com/onalant/zarr.git@shape
