@@ -116,7 +116,7 @@ class PrivilegedResidues:
             yield (hashed_rays, dummy_pose.clone())
 
     # NOTE(onalant): bring your own residue selector
-    def search(self, pose, groups, selector):
+    def search(self, pose, selector, groups=["all"]):
         """Search for privileged interactions in a pose.
 
         Parameters

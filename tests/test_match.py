@@ -90,7 +90,7 @@ def test_match(dummy, selector):
     res = dummy.residue(2)
     expected_coords = np.array([res.xyz(atom) for atom in rsd_to_fxnl_grp[res.name3()].atoms])
 
-    for (_, match) in pr.search(dummy, ["sc_bb"], selector):
+    for (_, match) in pr.search(dummy, selector, groups=["sc_bb"]):
         rmatch = match.residue(1)
         coords = np.array([rmatch.xyz(atom) for atom in functional_groups[rmatch.name()].atoms])
 

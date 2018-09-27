@@ -12,14 +12,14 @@ To install Privileged Residues, run this command in your terminal:
 
 .. code-block:: console
 
-    $ pip install privileged_residues
+    $ conda install -c http://conda.ipd.uw.edu privileged_residues
 
-This is the preferred method to install Privileged Residues, as it will always install the most recent stable release. 
+This is the preferred method to install Privileged Residues, as it will always install the most recent stable release.
 
-If you don't have `pip`_ installed, this `Python installation guide`_ can guide
+If you don't have `conda`_ installed, this `Python installation guide`_ can guide
 you through the process.
 
-.. _pip: https://pip.pypa.io
+.. _conda: https://conda.io/
 .. _Python installation guide: http://docs.python-guide.org/en/latest/starting/installation/
 
 
@@ -32,20 +32,21 @@ You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/weitzner/privileged_residues
+    $ git clone git://github.com/uw-ipd/privileged_residues
 
 Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl  -OL https://github.com/weitzner/privileged_residues/tarball/master
+    $ curl  -OL https://github.com/uw-ipd/privileged_residues/tarball/master
 
 Once you have a copy of the source, you can install it with:
 
 .. code-block:: console
 
+    $ ./devenv.sh
+    $ source conda/bin/activate conda
     $ python setup.py install
 
-
-.. _Github repo: https://github.com/weitzner/privileged_residues
-.. _tarball: https://github.com/weitzner/privileged_residues/tarball/master
+.. _Github repo: https://github.com/uw-ipd/privileged_residues
+.. _tarball: https://github.com/uw-ipd/privileged_residues/tarball/master

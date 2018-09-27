@@ -84,7 +84,7 @@ def resolve_rays(groups):
     for group in groups:
         for k in ray_bins:
             for v in ray_bins[k]:
-                if group in [k, v[0]]:
+                if (group == "all" or group in [k, v[0]]):
                     ray_selectors.append(v)
 
     return ray_selectors

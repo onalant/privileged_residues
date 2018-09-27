@@ -18,20 +18,17 @@ Privileged Residues
      :alt: Updates
 
 
-Privileged Residues contains methods for placing residues on the surface of a target protein that can be added to a RIF.
+Privileged Residues contains protocols for placing residues on the
+surface of a target protein that can be added to a rotamer interaction
+field.
 
 
 * Free software: Apache Software License 2.0
-* Documentation: https://privileged-residues.readthedocs.io.
+* Documentation: https://privileged-residues.readthedocs.io
 
-
-Features
---------
-
-* TODO
 
 Credits
----------
+-------
 
 This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 

@@ -26,5 +26,6 @@ dependencies:
     - watchdog
     - flake8
     - pip:
+        - better-apidoc
         - rmsd
         - git+https://github.com/onalant/zarr.git@shape
