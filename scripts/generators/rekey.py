@@ -1,10 +1,7 @@
-import multiprocessing
 import numpy as np
 import os
-import re
 import zarr
 
-from datetime import datetime
 from itertools import product
 
 from rif.eigen_types import X3
@@ -31,36 +28,35 @@ SLURM_NNODE = "SLURM_NNODES"
 
 ncpu = int(os.environ[SLURM_NCPU_NODE]) * int(os.environ[SLURM_NNODE]) - 2
 
-def preprocess(zarrfiles):
-    partitions = [ ]
+def Rekey(RecordProcessor):
+    def preprocess(zarrfiles):
+        partitions = [ ]
 
-    for zarrfile in zarrfiles:
+        for zarrfile in zarrfiles:
+            tbl = zarr.open(zarrfile, mode="r")
+
+            chunks = [min(p // ncpu, q) for (p, q) in zip(tbl.shape, tbl.chunks)]
+            raw_parts = tuple(np.mgrid[0:p:q] for (p, q) in zip(tbl.shape, chunks))
+
+            for partition in product(*raw_parts):
+                partitions.append((zarrfile, tuple(np.s_[p:p+q] for (p, q) in zip(partition, chunks))))
+
+        return partitions
+
+    def write_records(pipe, tbl_segment):
+        (zarrfile, partition) = tbl_segment
+
+        self.log(zarrfile, *("%d:%d" % (axis.start, axis.stop) + (":%d" % (axis.step) if axis.step is not None else "") for axis in partition))
+
         tbl = zarr.open(zarrfile, mode="r")
 
-        chunks = [min(p // ncpu, q) for (p, q) in zip(tbl.shape, tbl.chunks)]
-        raw_parts = tuple(np.mgrid[0:p:q] for (p, q) in zip(tbl.shape, chunks))
+        for record in tbl[partition]:
+            try:
+                dummy = newlat.get_bin_index(oldlat.get_center([record["transform"]])["raw"].squeeze())
+            except:
+                t = datetime.now().time().isoformat(timespec="milliseconds")
+                self.log(record)
+                continue
+            record["transform"] = dummy
 
-        for partition in product(*raw_parts):
-            partitions.append((zarrfile, tuple(np.s_[p:p+q] for (p, q) in zip(partition, chunks))))
-
-    return partitions
-
-def write_records(pipe, tbl_segment):
-    (zarrfile, partition) = tbl_segment
-
-    prefix = "[WORKER-%s]" % (re.match(".*?(\d+)", multiprocessing.current_process().name).group(1))
-    t = datetime.now().time().isoformat(timespec="milliseconds")
-    print(t, prefix, zarrfile, *("%d:%d" % (axis.start, axis.stop) + (":%d" % (axis.step) if axis.step is not None else "") for axis in partition))
-
-    tbl = zarr.open(zarrfile, mode="r")
-
-    for record in tbl[partition]:
-        try:
-            dummy = newlat.get_bin_index(oldlat.get_center([record["transform"]])["raw"].squeeze())
-        except:
-            t = datetime.now().time().isoformat(timespec="milliseconds")
-            print(t, prefix, record)
-            continue
-        record["transform"] = dummy
-
-        pipe.put(record)
+            pipe.put(record)

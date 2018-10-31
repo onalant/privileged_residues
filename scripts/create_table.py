@@ -7,11 +7,12 @@ import zarr
 sys.path.append("../")
 sys.path.append("/home/onalant/source/")
 
-from generators.rekey import attr, dt, preprocess, write_records
+from generators.catpi import attr, dt, preprocess, write_records
 from dtable import gentable
 
 from functools import partial
 from multiprocessing.pool import Pool
+from os import path
 
 SLURM_NCPU_NODE = "SLURM_JOB_CPUS_PER_NODE"
 SLURM_NNODE = "SLURM_NNODES"
@@ -20,7 +21,7 @@ ncpu = int(os.environ[SLURM_NCPU_NODE]) * int(os.environ[SLURM_NNODE]) - 2
 pool = Pool(ncpu)
 
 name = sys.argv[1]
-globexpr = sys.argv[2]
+globexpr = path.join(sys.argv[2], "*.pdb")
 outpath = sys.argv[3]
 
 ndt = np.dtype(dt)
