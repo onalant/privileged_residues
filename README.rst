@@ -24,7 +24,7 @@ field.
 
 
 * Free software: Apache Software License 2.0
-* Documentation: https://privileged-residues.readthedocs.io
+* Documentation: https://privilegedresidues.readthedocs.io
 
 
 Credits
